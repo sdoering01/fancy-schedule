@@ -7,7 +7,7 @@
     } from './schedule-store';
     import ColorPicker from './ColorPicker.svelte';
 
-    let show = true;
+    let show = false;
     let nameInput = '';
     let selectedItemIdx: number;
     let selectedItem: ScheduleItem | undefined;
@@ -62,9 +62,9 @@
             />
             <button type="submit">Hinzufügen</button>
         </form>
-        <hr />
-        <div class="edit-section">
-            {#if $scheduleItems.length > 0}
+        {#if $scheduleItems.length > 0}
+            <hr />
+            <div class="edit-section">
                 <h3>Bearbeiten</h3>
                 <select bind:value={selectedItemIdx}>
                     {#each $scheduleItems as item, itemIdx (item.id)}
@@ -93,8 +93,8 @@
                     />
                     <button on:click={handleDelete}>Löschen</button>
                 {/if}
-            {/if}
-        </div>
+            </div>
+        {/if}
     </div>
 </div>
 
